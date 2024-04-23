@@ -1,0 +1,8 @@
+{
+    "content": [
+        {
+            "object": "Player"
+        }
+    ],
+    "levels": ["levels/shelter.json"]
+}

@@ -1,0 +1,12 @@
+{
+    "content": [
+        {
+            "object": "DogAPI"
+        },
+        {
+            "object": "Shelter",
+            "money": 300
+        }
+    ],
+    "levels": []
+}
