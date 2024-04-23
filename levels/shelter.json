@@ -5,7 +5,9 @@
         },
         {
             "object": "Shelter",
-            "money": 300
+            "money": 300,
+            "baseCostPerMinute": 60,
+            "monthDuration": 60000
         }
     ],
     "levels": []

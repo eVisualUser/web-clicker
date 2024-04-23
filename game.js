@@ -16,7 +16,6 @@ class Game {
             .then(res => res.json())
             .then(async data => {
                 data.content.forEach(entity => {
-                    console.log("Object: " + entity.object);
                     let newEntity = eval('new ' + entity.object + '()');
 
                     for(let element in entity) {

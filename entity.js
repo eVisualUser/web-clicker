@@ -1,11 +1,14 @@
-class Entity {
+class Entity extends Saved {
     active = true;
     mustBeDestroyed = false;
     name = "Entity";
     others = [];
     started = false;
 
-    OnLoad() {}
+    OnLoad() {
+        this.skippedFromSaving.push("started");
+        this.skippedFromSaving.push("others");
+    }
     OnStart() {}
     async OnUpdate() {}
     OnDestroy() {}

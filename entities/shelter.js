@@ -1,9 +1,18 @@
 class Shelter extends Entity {
     name = "Shelter";
 
-    money = 1000;
+    size = 1;
 
     OnStart() {
-        console.log("Money: " + this.money);
+    
+        setInterval(this.OnEndOfMonth.bind(this), this.monthDuration);
+    }
+
+    GetCostPerMonth() {
+        return this.baseCostPerMinute * this.size;
+    }
+
+    OnEndOfMonth() {
+        this.money -= this.GetCostPerMonth();
     }
 }
