@@ -7,7 +7,8 @@
             "object": "Shelter",
             "money": 300,
             "baseCostPerMinute": 60,
-            "monthDuration": 60000
+            "monthDuration": 60000,
+            "upgradeCostPerSize": 100
         }
     ],
     "levels": []

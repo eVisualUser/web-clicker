@@ -3,6 +3,10 @@ class DogAPI extends Entity {
     
     api = new API("https://dog.ceo/api/breeds/image/random");
 
+    OnStart() {
+        this.skippedFromSaving.push("api");
+    }
+
     async GetDogImage() {
         let imageUrl = "";
         console.log(this.api.apiUrl);

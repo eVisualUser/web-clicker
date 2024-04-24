@@ -1,7 +1,6 @@
 class Entity extends Saved {
     active = true;
     mustBeDestroyed = false;
-    name = "Entity";
     others = [];
     started = false;
 

@@ -2,13 +2,14 @@ class Game {
     // Load a template entity
     entities = [];
 
-    LoadMod(script, className) {
-        eval(script);
-        let newEntity = eval('new ' + className + '()');
-        newEntity.others = this.entities;
-        newEntity.OnLoad();
-        
-        this.entities.push(newEntity);
+    constructor() {
+        window.addEventListener("beforeunload", this.OnUnload.bind(this));
+    }
+
+    OnUnload() {
+        for (let element of this.entities) {
+           element.Save("cross");
+        }
     }
 
     async LoadLevel(path) {
@@ -25,6 +26,7 @@ class Game {
                     }
 
                     newEntity.others = this.entities;
+                    newEntity.Load("cross");
                     newEntity.OnLoad();
                     
                     this.entities.push(newEntity);

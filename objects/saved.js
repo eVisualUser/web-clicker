@@ -1,49 +1,51 @@
 class Saved {
-    skippedFromSaving = ["skippedFromSaving"]
-
-    NewExpirationDate() {
-        let expirationDate = new Date();
-        expirationDate.setMonth(expirationDate.getMonth()+1);
-        return expirationDate;
-    }
+    name = "Entity";
+    skippedFromSaving = ["skippedFromSaving", "name"]
 
     IndexProfile(newProfile) {
         let profiles = this.GetAllProfiles();
 
-        if (profiles.find((profile) => profile == newProfile) == null) {
-            console.log("Added new profile: " + newProfile);
+        if (profiles.find((profile) => profile == newProfile && profile != "") == null) {
             profiles.push(newProfile);
         }
-        Cookie.set("profiles", profiles.toString(), this.NewExpirationDate());
+        profiles = profiles.toString();
+        Storage.set("profiles", profiles);
     }
 
     GetAllProfiles() {
-        let profiles = Cookie.get("profiles").split(',');
-        if (profiles[0] == '{')
-            profiles = [];
-
-        return profiles;
+        let storage = Storage.get("profiles");
+        if (storage != null) {
+            let profiles = storage.split(',');
+            return profiles;
+        }
+        return [];
     }
 
     Load(profile = "default") {
-        let cookie = JSON.parse(Cookie.get(profile));
-        for(const element in cookie) {
-            eval("this." + element + " = " + eval("cookie." + element)); 
+        let profileName = profile + "." + this.name;
+        
+        let storage = Storage.get(profileName);
+        if (storage != null) {
+            storage = JSON.parse(storage);
+            for(const element in storage) {
+                eval("this." + element + " = " + eval("storage." + element)); 
+            }
         }
     }
     
     Save(profile = "default") {
-        this.IndexProfile(profile);
         let out = "{"
         let index = 0;
         for(const element in this) {
             if (this.skippedFromSaving.find((skipped) => element == skipped) == null) {
-                out += "    \n\"" + element + "\":" + " " + "\"" + eval("this." + element) + "\",";
+                out += "    \n\"" + element + "\":" + " " + JSON.stringify(eval("this." + element)) + ",";
             }
         }
         out = out.substring(0, out.length - 1);
         out += "\n}";
         
-        Cookie.set(profile, out, this.NewExpirationDate());
+        let profileName = profile + "." + this.name;
+        this.IndexProfile(profileName);
+        Storage.set(profileName, out);
     }
 }
