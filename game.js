@@ -2,13 +2,83 @@ class Game {
     // Load a template entity
     entities = [];
 
+    reset = false;
+
     constructor() {
-        window.addEventListener("beforeunload", this.OnUnload.bind(this));
+        window.addEventListener("unload", this.OnUnload.bind(this));
+
+        BindEvent("Reset", this.OnReset.bind(this));
+
+        document.getElementById("export-button").onclick = this.Export.bind(this);
+        document.getElementById("import-button").addEventListener("change", this.Import.bind(this));
+        document.getElementById("reset-button").onclick = (_event) => { EmitEvent("Reset") };
+    }
+
+    OnReset() {
+        let profiles = Storage.get("profiles");
+        if (profiles != null) {
+            profiles.split(',').forEach((profile) => {
+                Storage.remove(profile);
+            });
+            Storage.remove("profiles");
+        }
+
+        this.reset = true;
+        window.location.reload(true);
     }
 
     OnUnload() {
-        for (let element of this.entities) {
-           element.Save("cross");
+        if (!this.reset) {
+            this.entities.forEach((entity) => {
+                console.log("Save all");
+                entity.Save("cross");
+            });
+        }
+    }
+
+    Export() {
+        let profiles = Storage.get("profiles");
+        let out = [] 
+        if (profiles != null) {
+            profiles.split(',').forEach((profile) => {
+                out.push([profile, Storage.get(profile)]);
+            });
+        }
+        out = JSON.stringify(out);
+
+        const file = new File([out], "game-save.wcsf", {
+            type: "file/text",
+        });
+
+        let url = URL.createObjectURL(file);
+
+        open(url);
+        
+        return out;
+    }
+
+    async Import(event) {
+        let file = event.target.files[0];
+        if (file != null) {
+            const reader = new FileReader();
+            reader.addEventListener("load", (event) => {
+                let data = JSON.parse(event.target.result);
+
+                data.forEach((array) => {
+                    let profile = array[0];
+                    let content = array[1];
+
+                    if (profile != null && content != null) {
+                        Storage.set(profile, content);
+                    }
+                });
+
+                console.log("Reload");
+                window.removeEventListener("unload", this.OnUnload.bind(this));
+                this.reset = true;
+                window.location.reload(true);
+            });
+            reader.readAsText(file, "UTF-8");
         }
     }
 
@@ -21,7 +91,7 @@ class Game {
 
                     for(let element in entity) {
                         if (element != "object") {
-                            eval("newEntity." + element + " = " + eval("entity." + element)); 
+                            eval("newEntity." + element + " = " + "entity." + element); 
                         }
                     }
 
@@ -39,11 +109,14 @@ class Game {
     }
 
     CleanEntities() {
-        let i = this.entities.length
+        let i = this.entities.length;
         while(i--) {
             if (this.entities[i].mustBeDestroyed) {
                 this.entities[i].OnDestroy();
-                this.entities.splice(i);
+                this.entities[i] = null;
+                delete this.entities[i];
+                this.entities.length -= 1;
+                console.log("Removed entity");
                 return this.CleanEntities();
             }
         }
@@ -53,6 +126,7 @@ class Game {
         this.entities.forEach(entity => {
             if (entity.active) {
                 if (!entity.started) {
+                    entity.others = this.entities;
                     entity.OnStart();
                     entity.started = true;
                 }
@@ -60,7 +134,7 @@ class Game {
                 entity.OnUpdate();
             }
         });
-
+        
         this.CleanEntities();
 
         window.requestAnimationFrame(this.Update.bind(this));

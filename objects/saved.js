@@ -28,7 +28,7 @@ class Saved {
         if (storage != null) {
             storage = JSON.parse(storage);
             for(const element in storage) {
-                eval("this." + element + " = " + eval("storage." + element)); 
+                eval("this." + element + " = " + "storage." + element); 
             }
         }
     }
@@ -38,7 +38,7 @@ class Saved {
         let index = 0;
         for(const element in this) {
             if (this.skippedFromSaving.find((skipped) => element == skipped) == null) {
-                out += "    \n\"" + element + "\":" + " " + JSON.stringify(eval("this." + element)) + ",";
+                out += "\n\"" + element + "\":" + " " + JSON.stringify(eval("this." + element)) + ",";
             }
         }
         out = out.substring(0, out.length - 1);

@@ -5,10 +5,12 @@
         },
         {
             "object": "Shelter",
-            "money": 300,
+            "money": 1000,
             "baseCostPerMinute": 60,
-            "monthDuration": 60000,
-            "upgradeCostPerSize": 100
+            "monthDuration": 30000,
+            "upgradeCostPerSize": 10,
+            "clientCapacity": 2,
+            "dogPrice": 100
         }
     ],
     "levels": []

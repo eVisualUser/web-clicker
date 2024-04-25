@@ -15,4 +15,8 @@ class DogAPI extends Entity {
             .then((data) => imageUrl = data.message);
         return imageUrl;
     }
+
+    OnDestroy() {
+        this.api = null;
+    }
 }

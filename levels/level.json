@@ -2,6 +2,9 @@
     "content": [
         {
             "object": "Player"
+        },
+        {
+            "object": "Market"
         }
     ],
     "levels": ["levels/shelter.json"]
