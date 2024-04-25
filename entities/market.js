@@ -3,45 +3,63 @@ class Market extends Entity {
 
     shelter;
 
+    monthlyClients = 0;
+    monthlyStatus = 0;
+
     /**
     * Return the number of client available.
     */
     GetClientCount() {
-        return this.shelter.size * GetRandomNumber(1, this.shelter.clientCapacity);
+        return GetRandomInt(1, this.shelter.clientCapacity * this.shelter.size);
     }
 
     /**
     * The minimal status that a client need to bought a dog.
     */
     GetMinimalStatus() {
-        return GetRandomNumber(this.shelter.size, 10);
+        return GetRandomInt(1, this.shelter.size * this.statusMinimumModifier);
     }
     
     OnStart() {
         this.skippedFromSaving.push("shelter");
 
-        CreateEvent("EndOfMonth");
         BindEvent("EndOfMonth", this.OnEndOfMonth.bind(this));
 
         this.shelter = this.GetEntityByName("Shelter");
+
+        this.UpdateMonthlyInfo();
+    }
+
+    UpdateMonthlyInfo() {
+        this.monthlyClients = this.GetClientCount();
+        this.monthlyStatus = this.GetMinimalStatus();
+
+        let monthClients = document.getElementById("market-month-clients");
+        if (monthClients != null) {
+            monthClients.textContent = "Clients for this month: " + this.monthlyClients;
+        }
+
+        let monthStatus = document.getElementById("market-minimum-status");
+        if (monthStatus != null) {
+            monthStatus.textContent = "Status for this month: " + this.monthlyStatus;
+        }
     }
 
     OnEndOfMonth() {
-        let clients = this.GetClientCount();
-        let minimumStatus = this.GetMinimalStatus();
-
         let i = this.shelter.dogs.length;
         while(i--) {
-            if (clients == 0) {
+            if (this.monthlyClients == 0) {
                 break;
             }
 
-            if (this.shelter.dogs[i].status >= minimumStatus) {
+            if (this.shelter.dogs[i].status >= this.monthlyStatus) {
                 this.shelter.money += this.shelter.dogPrice;
                 this.shelter.dogs.splice(i);
                 this.shelter.OnSellDog(i);
-                clients--;
+                this.monthlyClients--;
             }
         }
+
+        this.UpdateMonthlyInfo();
     }
 }

@@ -14,7 +14,7 @@ class GameEvent {
     }
 }
 
-let GAME_EVENTS = [new GameEvent("Reset")];
+let GAME_EVENTS = [new GameEvent("Reset"), new GameEvent("EndOfMonth")];
 
 function CreateEvent(eventName) {
     GAME_EVENTS.push(new GameEvent(eventName));

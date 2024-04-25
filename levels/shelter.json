@@ -9,7 +9,7 @@
             "baseCostPerMinute": 60,
             "monthDuration": 30000,
             "upgradeCostPerSize": 10,
-            "clientCapacity": 2,
+            "clientCapacity": 10,
             "dogPrice": 100
         }
     ],

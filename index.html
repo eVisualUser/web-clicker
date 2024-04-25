@@ -20,6 +20,7 @@
         
         <script type="text/javascript" src="entities/dogAPI.js"></script>
         <script type="text/javascript" src="entities/shelter.js"></script>
+        <script type="text/javascript" src="entities/employees.js"></script>
         <script type="text/javascript" src="entities/market.js"></script>
         <script type="text/javascript" src="entities/player.js"></script>
         
@@ -35,18 +36,30 @@
 
         <!-- Shelter -->
         <div>
+            <h1>Shelter</h1>
             <p id="shelter-money"></p>
             <p id="shelter-cost"></p>
             <p id="shelter-size"></p>
             <button id="shelter-upgrade">Upgrade Shelter</button>
+            
+            <h2>Employees</h2>
+            <p id="employees-count"></p>
+            <button id="employee-buy">Buy employee</button>
         </div>
+
+        <di>
+            <h1>Market</h1>
+            <p id="market-month-clients"></p>
+            <p id="market-minimum-status"></p>
+        </di>
 
         <!-- Clicker -->
         <div>
+            <h1>Actions</h1>
             <button id="clicker-button">Click !</button>
             <button id="export-button">Export</button>
             <button id="reset-button">Reset</button>
-            <input type="file" title="Import" accept=".wcsf" id="import-button"></input>
+            <input type="file" accept=".wcsf" id="import-button"></input>
         </div>
 
         <div id="dog-view"></div>
