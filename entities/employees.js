@@ -21,7 +21,7 @@ class Employees extends Entity {
         employeesCount.textContent = "Employees: " + this.quantity;
 
         let buyEmployees = document.getElementById("employee-buy");
-        buyEmployees.textContent = "Buy Slave (" + this.shelter.money + "/" + this.workerCost + "€)";
+        buyEmployees.textContent = "Buy Slave (" + this.shelter.money + "/" + this.workerCost + "💸)";
     }
 
     OnTime() {

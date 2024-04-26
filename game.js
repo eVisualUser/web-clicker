@@ -8,13 +8,14 @@ class Game {
         window.addEventListener("unload", this.OnUnload.bind(this));
 
         BindEvent("Reset", this.OnReset.bind(this));
+        BindEvent("Lose", this.OnLose.bind(this));
 
         document.getElementById("export-button").onclick = this.Export.bind(this);
         document.getElementById("import-button").addEventListener("change", this.Import.bind(this));
         document.getElementById("reset-button").onclick = (_event) => { EmitEvent("Reset") };
     }
 
-    OnReset() {
+    Clear() {
         let profiles = Storage.get("profiles");
         if (profiles != null) {
             profiles.split(',').forEach((profile) => {
@@ -22,6 +23,17 @@ class Game {
             });
             Storage.remove("profiles");
         }
+    }
+
+    OnLose() {
+        this.Clear();
+
+        this.reset = true;
+        window.location.replace("./lose.html");
+    }
+
+    OnReset() {
+        this.Clear();
 
         this.reset = true;
         window.location.reload(true);

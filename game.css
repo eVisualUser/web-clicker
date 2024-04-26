@@ -10,11 +10,7 @@ nav {
 
 p {
     font-family: 'Courier New', Courier, monospace;
-}
-
-p.multiline {
-    white-space: pre-wrap;
-    text-align: justify;
+    text-align: center;
 }
 
 div.slate {
@@ -23,7 +19,6 @@ div.slate {
     background-color: black;
     width: 80%;
     height: 15%;
-    text-align: center;
     color: white;
     transition-duration: 1s;
     padding: 1%;
@@ -39,6 +34,21 @@ div.slate:hover {
     opacity: 100%;
 }
 
+div.clicker {
+    position: fixed;
+    margin-left: 80%;
+    margin-right: 10%;
+    margin-top: 80%;
+    margin-bottom: 0%;
+    background-color: black;
+    width: 15%;
+    height: 15%;
+    color: white;
+    transition-duration: 1s;
+    padding: 1%;
+    z-index: 5;
+}
+
 button {
     border: none;
     background-color: azure;
@@ -46,7 +56,9 @@ button {
 }
 
 img {
-    object-fit: scale-down;
+    object-fit: fill;
     width: 25vw;
     height: 25vw;
+    margin-right: 35%;
+    margin-left: 35%;
 }

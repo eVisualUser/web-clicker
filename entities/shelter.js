@@ -53,7 +53,7 @@ class Shelter extends Entity {
         }
 
         if (this.money <= 0) {
-            EmitEvent("Reset");
+            EmitEvent("Lose");
         }
     }
 
@@ -113,7 +113,7 @@ class Shelter extends Entity {
     UpdateUIInfo() {
         let shelterMoney = document.getElementById("shelter-money");
         if (shelterMoney != null) {
-            shelterMoney.textContent = "Money: " + this.money + "€";
+            shelterMoney.textContent = "Money: " + this.money + "💸";
         }
 
         let shelterCost = document.getElementById("shelter-cost");
@@ -127,12 +127,12 @@ class Shelter extends Entity {
 
         let shelterSize = document.getElementById("shelter-size");
         if (shelterSize != null) {
-            shelterSize.textContent = "Size: " + this.size;
+            shelterSize.textContent = " " + this.size;
         }
 
         let shelterUpgrade = document.getElementById("shelter-upgrade");
         if (shelterUpgrade != null) {
-            shelterUpgrade.textContent = "Upgrade Shelter (" + this.money + "/" + this.GetUpgradeCost() + "€)";
+            shelterUpgrade.textContent = "Upgrade Shelter (" + this.money + "/" + this.GetUpgradeCost() + "💸)";
             shelterUpgrade.onclick = this.OnUpgrade.bind(this);
         }
     }
