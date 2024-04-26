@@ -13,6 +13,9 @@ class Game {
         document.getElementById("export-button").onclick = this.Export.bind(this);
         document.getElementById("import-button").addEventListener("change", this.Import.bind(this));
         document.getElementById("reset-button").onclick = (_event) => { EmitEvent("Reset") };
+        document.getElementById("import-button-relay").onclick = (_) => {
+            document.getElementById("import-button").click();
+        };
     }
 
     Clear() {
