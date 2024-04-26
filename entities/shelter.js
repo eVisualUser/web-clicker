@@ -139,7 +139,7 @@ class Shelter extends Entity {
 
         let shelterSize = document.getElementById("shelter-size");
         if (shelterSize != null) {
-            shelterSize.textContent = " " + this.size;
+            shelterSize.textContent = "Size: " + this.size;
         }
 
         let shelterUpgrade = document.getElementById("shelter-upgrade");

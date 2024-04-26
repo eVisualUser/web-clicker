@@ -50,7 +50,14 @@ div.clicker {
     z-index: 5;
 }
 
+input.fileInput {
+    display: none;
+}
+
 button {
+    transition: 1.0s cubic-bezier(0.075, 0.82, 0.165, 1);
+    width: 15vw;
+    height: 5vw;
     transition: 0.5s;
     border: none;
     background-color: azure;
