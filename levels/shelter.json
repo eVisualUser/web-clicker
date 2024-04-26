@@ -10,7 +10,7 @@
             "monthDuration": 15000,
             "upgradeCostPerSize": 7,
             "clientCapacity": 5,
-            "dogPrice": 75
+            "dogPrice": 100
         }
     ],
     "levels": []

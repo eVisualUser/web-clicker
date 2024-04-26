@@ -86,7 +86,7 @@ class Shelter extends Entity {
         if (this.dogAPI != null) {
             let i = dogsView.children.length;
             for(let dog of this.dogs) {
-                let dogView = GetChildByAttribute(dogsView, dog.id);;
+                let dogView = GetChildByAttribute(dogsView, dog.id);
                 if (dogView == null) {
                     dogView = document.createElement("div");
                     dogView.id = dog.id;
