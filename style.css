@@ -9,10 +9,12 @@ h1 {
 div.nav {
     padding-left: var(--minimum-padding);
     padding-right: var(--minimum-padding);
-    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
     height: 15%;
     color: white;
     background-color: black;
+    position: relative;
 }
 
 ul.nav {

@@ -27,6 +27,7 @@ class Shelter extends Entity {
         setTimeout(this.OnTime.bind(this), 1000);
 
         BindEvent("OnUI", this.OnUI.bind(this));
+        Storage.set("BestScore", this.money);
     }
 
     OnUI() {
@@ -56,6 +57,11 @@ class Shelter extends Entity {
         EmitEvent("OnUI");
         if (this.active) {
             setTimeout(this.OnTime.bind(this), 1000);
+        }
+
+        let bestScore = parseInt(Storage.get("BestScore"));
+        if (this.money > bestScore) {
+            Storage.set("BestScore", this.money);
         }
 
         if (this.money <= 0) {

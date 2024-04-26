@@ -51,9 +51,34 @@ div.clicker {
 }
 
 button {
+    transition: 0.5s;
     border: none;
     background-color: azure;
     color: black;
+}
+
+button:hover {
+    transition: 0.5s;
+    background-color: slategray;
+}
+
+button:active {
+    transition: 0.1;
+    background-color: cadetblue;
+}
+
+button.clicker {
+    transition: 0.1s;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 100%;
+}
+
+button.clicker:active {
+    transition: 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: rotateZ(350deg);
 }
 
 img {
