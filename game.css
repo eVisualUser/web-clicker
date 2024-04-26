@@ -56,7 +56,7 @@ button {
 }
 
 img {
-    object-fit: fill;
+    object-fit: scale-down;
     width: 25vw;
     height: 25vw;
     margin-right: 35%;

@@ -14,6 +14,7 @@ class Employees extends Entity {
         buyEmployees.onclick = this.BuyWorker.bind(this);
 
         this.UpdateUI();
+        BindEvent("OnUI", this.UpdateUI.bind(this));
     }
 
     UpdateUI() {
@@ -36,6 +37,6 @@ class Employees extends Entity {
             this.quantity++;
             this.workerCost = Math.floor(this.workerCost * 1.5);
         }
-        this.UpdateUI();
+        EmitEvent("OnUI");
     }
 }

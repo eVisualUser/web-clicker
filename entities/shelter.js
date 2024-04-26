@@ -25,6 +25,12 @@ class Shelter extends Entity {
         this.UpdateUIDog();
 
         setTimeout(this.OnTime.bind(this), 1000);
+
+        BindEvent("OnUI", this.OnUI.bind(this));
+    }
+
+    OnUI() {
+        this.UpdateUIInfo();
     }
 
     Work() {
@@ -47,7 +53,7 @@ class Shelter extends Entity {
             await this.OnEndOfMonth();
             this.time = 0;
         }
-        this.UpdateUIInfo();
+        EmitEvent("OnUI");
         if (this.active) {
             setTimeout(this.OnTime.bind(this), 1000);
         }
@@ -150,7 +156,7 @@ class Shelter extends Entity {
         if (this.money >= upgradeCost) {
             this.size += 1;
             this.money -= upgradeCost;
-            this.UpdateUIInfo();
+            EmitEvent("OnUI");
         }
     }
 }
