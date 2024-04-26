@@ -84,9 +84,10 @@ class Shelter extends Entity {
         let dogsView = document.getElementById("dog-view");
 
         if (this.dogAPI != null) {
-            let i = dogsView.children.length;
+            let i = 0;
             for(let dog of this.dogs) {
-                let dogView = GetChildByAttribute(dogsView, dog.id);
+                dog.id = i;
+                let dogView = GetChildByAttribute(dogsView, i);
                 if (dogView == null) {
                     dogView = document.createElement("div");
                     dogView.id = dog.id;
@@ -118,6 +119,7 @@ class Shelter extends Entity {
 
                 let dogPicture = GetChildByAttribute(dogView, "DogPicture");
                 dogPicture.src = dog.picture;
+                i++;
             }
         }
     }
