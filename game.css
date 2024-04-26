@@ -1,0 +1,52 @@
+div.employees {
+    background-color: gray;
+    box-shadow: inset 3%, 3%, 3%;
+}
+
+nav {
+    width: 100%;
+    height: 25%;
+}
+
+p {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p.multiline {
+    white-space: pre-wrap;
+    text-align: justify;
+}
+
+div.slate {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: black;
+    width: 80%;
+    height: 15%;
+    text-align: center;
+    color: white;
+    transition-duration: 1s;
+    padding: 1%;
+    margin-top: 3%;
+    opacity: 75%;
+}
+
+div.slate:hover {
+    transition: 1s;
+    width: 80%;
+    height: 20%;
+    z-index: 1;
+    opacity: 100%;
+}
+
+button {
+    border: none;
+    background-color: azure;
+    color: black;
+}
+
+img {
+    object-fit: scale-down;
+    width: 25vw;
+    height: 25vw;
+}

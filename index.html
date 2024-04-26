@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Web Clicker</title>
+        <title>🐕 Web Clicker</title>
         
         <meta charset="utf-8"/>
 
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="game.css"/>
 
         <!-- JS -->
         <script type="text/javascript" src="objects/utils.js"></script>
@@ -30,39 +31,57 @@
         <nav class="nav">
             <ul class="nav">
                 <li id="navbar"></li>
-                <li><h1>Web Clicker</h1></li>
+                <li><h1>🐕 Web Clicker</h1></li>
             </ul>
         </nav>
 
-        <!-- Shelter -->
-        <div>
-            <h1>Shelter</h1>
-            <p id="shelter-money"></p>
-            <p id="shelter-cost"></p>
-            <p id="shelter-size"></p>
-            <button id="shelter-upgrade">Upgrade Shelter</button>
-            
-            <h2>Employees</h2>
-            <p id="employees-count"></p>
-            <button id="employee-buy">Buy employee</button>
-        </div>
+        <br/>
 
-        <di>
-            <h1>Market</h1>
-            <p id="market-month-clients"></p>
-            <p id="market-minimum-status"></p>
-        </di>
-
-        <!-- Clicker -->
-        <div>
-            <h1>Actions</h1>
-            <button id="clicker-button">Click !</button>
+        <!-- Game Data -->
+        <div class="slate">
+            <h1>Game</h1>
+            <p class="multiline">
+                You must click to improve the status of the dogs.
+                The market will have clients, and they want your dogs to have a minimal status.
+                The number of client is limited.
+                You can buy slaves to work for you.
+            </p>
             <button id="export-button">Export</button>
             <button id="reset-button">Reset</button>
             <input type="file" accept=".wcsf" id="import-button"></input>
         </div>
 
-        <div id="dog-view"></div>
+        <!-- Slaves -->
+        <div class="slate">
+            <h1>Slaves</h1>
+            <p id="employees-count"></p>
+            <button id="employee-buy">Buy slave</button>
+        </div>
+
+
+         <!-- Market -->
+         <div class="slate">
+            <h1>Market</h1>
+            <p id="market-month-clients"></p>
+            <p id="market-minimum-status"></p>
+        </div>
+
+        <!-- Shelter -->
+        <div class="slate">
+            <h1>Shelter</h1>
+            <p id="shelter-money"></p>
+            <p id="shelter-cost"></p>
+            <p id="shelter-size"></p>
+            <button id="shelter-upgrade">Upgrade Shelter</button>
+        </div>
+
+        <!-- Clicker -->
+        <div class="slate">
+            <h1>Clicker</h1>
+            <button id="clicker-button">Click !</button>
+        </div>
+
+        <div class="slate" id="dog-view"></div>
 
     </body>
 </html>

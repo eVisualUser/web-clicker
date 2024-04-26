@@ -12,7 +12,8 @@ class DogAPI extends Entity {
         console.log(this.api.apiUrl);
         await fetch(this.api.apiUrl)
             .then((res) => res.json())
-            .then((data) => imageUrl = data.message);
+            .then((data) => imageUrl = data.message)
+            .catch((_) => {});
         return imageUrl;
     }
 

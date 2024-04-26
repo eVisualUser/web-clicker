@@ -19,6 +19,9 @@ class Employees extends Entity {
     UpdateUI() {
         let employeesCount = document.getElementById("employees-count");
         employeesCount.textContent = "Employees: " + this.quantity;
+
+        let buyEmployees = document.getElementById("employee-buy");
+        buyEmployees.textContent = "Buy Slave (" + this.shelter.money + "/" + this.workerCost + "€)";
     }
 
     OnTime() {
@@ -31,6 +34,7 @@ class Employees extends Entity {
         if (this.shelter.money >= this.workerCost) {
             this.shelter.money -= this.workerCost;
             this.quantity++;
+            this.workerCost = Math.floor(this.workerCost * 1.5);
         }
         this.UpdateUI();
     }

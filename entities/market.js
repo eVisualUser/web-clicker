@@ -17,7 +17,7 @@ class Market extends Entity {
     * The minimal status that a client need to bought a dog.
     */
     GetMinimalStatus() {
-        return GetRandomInt(1, this.shelter.size * this.statusMinimumModifier);
+        return GetRandomInt(Math.floor(this.minimalStatusModifier * this.shelter.size), this.shelter.size * this.statusMinimumModifier);
     }
     
     OnStart() {

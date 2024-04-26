@@ -28,13 +28,13 @@ class Shelter extends Entity {
     }
 
     Work() {
-        let random = parseInt(GetRandomNumber(-1, this.dogs.length));
-        if (random < 0) random = 0;
+        let random = GetRandomInt(0, this.dogs.length);
 
         let randomDog = this.dogs[random];
         if (randomDog != null) {
             randomDog.status += 1;
         }
+        this.UpdateUIDog();
     }
 
     GetCostPerMonth() {
@@ -48,7 +48,6 @@ class Shelter extends Entity {
             this.time = 0;
         }
         this.UpdateUIInfo();
-        this.UpdateUIDog();
         if (this.active) {
             setTimeout(this.OnTime.bind(this), 1000);
         }
@@ -66,6 +65,7 @@ class Shelter extends Entity {
             dog.picture = await this.dogAPI.GetDogImage();
             this.dogs.push(dog);
         }
+        this.UpdateUIDog();
     }
 
     async UpdateUIDog() {
@@ -113,7 +113,7 @@ class Shelter extends Entity {
     UpdateUIInfo() {
         let shelterMoney = document.getElementById("shelter-money");
         if (shelterMoney != null) {
-            shelterMoney.textContent = "Money: " + this.money;
+            shelterMoney.textContent = "Money: " + this.money + "€";
         }
 
         let shelterCost = document.getElementById("shelter-cost");
@@ -122,7 +122,7 @@ class Shelter extends Entity {
             if (timeBuf == 0)
                 timeBuf += 1;
 
-            shelterCost.textContent = "Cost per month (" + ((this.monthDuration / 1000) - (timeBuf / 1000)) + "s): " + this.GetCostPerMonth();
+            shelterCost.textContent = "Cost per month (" + Math.ceil((this.monthDuration / 1000) - (timeBuf / 1000)) + "s): " + this.GetCostPerMonth();
         }
 
         let shelterSize = document.getElementById("shelter-size");
@@ -132,7 +132,7 @@ class Shelter extends Entity {
 
         let shelterUpgrade = document.getElementById("shelter-upgrade");
         if (shelterUpgrade != null) {
-            shelterUpgrade.textContent = "Upgrade Shelter (" + this.money + "/" + this.GetUpgradeCost() + "$)";
+            shelterUpgrade.textContent = "Upgrade Shelter (" + this.money + "/" + this.GetUpgradeCost() + "€)";
             shelterUpgrade.onclick = this.OnUpgrade.bind(this);
         }
     }
