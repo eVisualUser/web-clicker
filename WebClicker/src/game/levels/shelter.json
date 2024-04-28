@@ -1,0 +1,17 @@
+{
+    "content": [
+        {
+            "object": "DogAPI"
+        },
+        {
+            "object": "Shelter",
+            "money": 1000,
+            "baseCostPerMinute": 70,
+            "monthDuration": 15000,
+            "upgradeCostPerSize": 7,
+            "clientCapacity": 5,
+            "dogPrice": 100
+        }
+    ],
+    "levels": []
+}

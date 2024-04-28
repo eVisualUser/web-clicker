@@ -1,0 +1,17 @@
+{
+    "content": [
+        {
+            "object": "Player"
+        },
+        {
+            "object": "Market",
+            "statusMinimumModifier": 20,
+            "minimalStatusModifier": 0.5
+        },
+        {
+            "object": "Employees",
+            "workerCost": 250
+        }
+    ],
+    "levels": ["levels/shelter.json"]
+}

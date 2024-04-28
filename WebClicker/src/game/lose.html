@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lose</title>
+        <meta charset="utf-8"/>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="game.css"/>
+
+        <script type="text/javascript" src="objects/storage.js"></script>
+    
+        <script>
+            window.addEventListener("load", (_) => {
+                let lastScore = document.getElementById("best-score");
+                lastScore.textContent = "Best score: " + Storage.get("BestScore") + "💸";
+            });
+        </script>
+    </head>
+    <body>
+        <div class="slate">
+            <h1>You Lose</h1>
+            <p id="best-score"></p>
+            <a href="index.html"><button>Retry</button></a>
+        </div>
+    </body>
+</html>

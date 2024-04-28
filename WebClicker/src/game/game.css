@@ -1,0 +1,97 @@
+div.employees {
+    background-color: gray;
+    box-shadow: inset 3%, 3%, 3%;
+}
+
+nav {
+    width: 100%;
+    height: 25%;
+}
+
+p {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+div.slate {
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: black;
+    width: 80%;
+    height: 15%;
+    color: white;
+    transition-duration: 1s;
+    padding: 1%;
+    margin-top: 3%;
+    opacity: 75%;
+}
+
+div.slate:hover {
+    transition: 1s;
+    width: 80%;
+    height: 20%;
+    z-index: 1;
+    opacity: 100%;
+}
+
+div.clicker {
+    position: fixed;
+    margin-left: 80%;
+    margin-right: 10%;
+    margin-top: 80%;
+    margin-bottom: 0%;
+    background-color: black;
+    width: 15%;
+    height: 15%;
+    color: white;
+    transition-duration: 1s;
+    padding: 1%;
+    z-index: 5;
+}
+
+input.fileInput {
+    display: none;
+}
+
+button {
+    transition: 1.0s cubic-bezier(0.075, 0.82, 0.165, 1);
+    width: 15vw;
+    height: 5vw;
+    transition: 0.5s;
+    border: none;
+    background-color: azure;
+    color: black;
+}
+
+button:hover {
+    transition: 0.5s;
+    background-color: slategray;
+}
+
+button:active {
+    transition: 0.1;
+    background-color: cadetblue;
+}
+
+button.clicker {
+    transition: 0.1s;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 100%;
+}
+
+button.clicker:active {
+    transition: 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: rotateZ(350deg);
+}
+
+img {
+    object-fit: scale-down;
+    width: 25vw;
+    height: 25vw;
+    margin-right: 35%;
+    margin-left: 35%;
+}

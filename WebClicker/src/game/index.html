@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>🐕 Dog Shelter Clicker</title>
+        
+        <meta charset="utf-8"/>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="game.css"/>
+
+        <!-- JS -->
+        <script type="text/javascript" src="objects/utils.js"></script>
+        <script type="text/javascript" src="objects/storage.js"></script>
+        <script type="text/javascript" src="objects/events.js"></script>
+        <script type="text/javascript" src="objects/saved.js"></script>
+        <script type="text/javascript" src="objects/dog.js"></script>
+
+        <script type="text/javascript" src="api.js"></script>
+        <script type="text/javascript" src="entity.js"></script>
+        
+        <script type="text/javascript" src="entities/dogAPI.js"></script>
+        <script type="text/javascript" src="entities/shelter.js"></script>
+        <script type="text/javascript" src="entities/employees.js"></script>
+        <script type="text/javascript" src="entities/market.js"></script>
+        <script type="text/javascript" src="entities/player.js"></script>
+        
+        <script type="text/javascript" src="game.js"></script>
+    </head>
+    <body>
+        <div class="nav">
+            <ul class="nav">
+                <li id="navbar"></li>
+                <li><h1>🐕 Dog Shelter Clicker</h1></li>
+            </ul>
+            <a href="../index.html"><button>Main Menu</button></a>
+        </div>
+
+        <br/>
+
+        <!-- Game Data -->
+        <div class="slate">
+            <h1>Game</h1>
+            <p class="multiline">
+                You must click to improve the status of the dogs.
+                The market will have clients, and they want your dogs to have a minimal status.
+                The number of client is limited.
+                You can buy slaves to work for you.
+            </p>
+            <button id="export-button">Export</button>
+            <button id="reset-button">Reset</button>
+            <input class="fileInput" type="file" accept=".wcsf" id="import-button"></input>
+            <button id="import-button-relay">Import</button>
+        </div>
+
+        <!-- Slaves -->
+        <div class="slate">
+            <h1>Slaves</h1>
+            <p id="employees-count"></p>
+            <button id="employee-buy">Buy slave</button>
+        </div>
+
+
+         <!-- Market -->
+         <div class="slate">
+            <h1>Market</h1>
+            <p id="market-month-clients"></p>
+            <p id="market-minimum-status"></p>
+        </div>
+
+        <!-- Shelter -->
+        <div class="slate">
+            <h1>Shelter</h1>
+            <p id="shelter-money"></p>
+            <p id="shelter-cost"></p>
+            <p id="shelter-size"></p>
+            <button id="shelter-upgrade">Upgrade Shelter</button>
+        </div>
+
+        <!-- Clicker -->
+        <div class="slate">
+            <h1>Clicker</h1>
+            <button class="clicker" id="clicker-button">Click !</button>
+        </div>
+
+        <div class="slate" id="dog-view"></div>
+
+    </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "productName": "webclicker",
+  "version": "0.0.0",
+  "identifier": "com.evisualuser.webclicker",
+  "build": {
+    "frontendDist": "../src"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "Dog Shelter Clicker",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/Icon.png",
+      "icons/Icon.ico"
+    ]
+  }
+}
